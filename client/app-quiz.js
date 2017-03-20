@@ -1,7 +1,7 @@
 /**
  * Created by Julius Alvarado on 3/19/2017.
  */
-(function(){
+(function () {
     "use strict";
 
     var app = angular.module('app-quiz', []),
@@ -10,7 +10,7 @@
 
     app.factory(factoryId, ['$http', jDataServiceClass]);
     app.controller(controllerId, ['$scope', '$sce', 'jDataSer', QuizCtrlClass]);
-    
+
     function QuizCtrlClass($scope, $sce, jDataSer) {
         $scope.introMessage = 'Test your knowledge';
         $scope.score = 0;
@@ -18,14 +18,15 @@
         $scope.activeQuestionAnswered = 0;
         $scope.percentage = 0;
 
-        $scope.selectAnswer = function(indexQuestion, indexAnswer){
+        $scope.selectAnswer = function (indexQuestion, indexAnswer) {
             var questionState = $scope.myQuestions[indexQuestion].questionState;
 
-            if(questionState != 'answered') { // .questionState is falsey because user has yet to click on an answer
+            if (questionState != 'answered') { // .questionState is falsey because user has yet to click on an answer
                 $scope.myQuestions[indexQuestion].selectedAnswer = indexAnswer;
                 var correctAnswer = $scope.myQuestions[indexQuestion].correct;
+                $scope.myQuestions[indexQuestion].correctAnswer = correctAnswer;
 
-                if(indexAnswer === correctAnswer) {
+                if (indexAnswer === correctAnswer) {
                     $scope.myQuestions[indexQuestion].correctness = 'correct';
                     $scope.score += 1;
                 } else {
@@ -36,21 +37,34 @@
             }
         };
 
+        $scope.isSelected = function (qIndex, aIndex) {
+            return $scope.myQuestions[qIndex].selectedAnswer === aIndex;
+        };
+
+        $scope.isCorrect = function(qIndex, aIndex){
+            return $scope.myQuestions[qIndex].correctAnswer === aIndex;
+        };
+
+        $scope.selectContinue = function(){
+            return $scope.activeQuestion += 1;
+        };
+
         activate();
-        function activate () {
-            jDataSer.getLocalQuizData().then(function(res){
+        function activate() {
+            jDataSer.getLocalQuizData().then(function (res) {
                 $scope.myQuestions = res.data;
                 $scope.totalQuestions = $scope.myQuestions.length;
             });
         }
     }
-    
+
     function jDataServiceClass($http) {
-        var getQuizData = function() {
+
+        var getQuizData = function () {
             return $http.get('api/quiz/get-quiz-data.php?jtoken=public');
         };
 
-        var getLocalQuizData = function(){
+        var getLocalQuizData = function () {
             return $http.get('quiz_data.json')
         };
 

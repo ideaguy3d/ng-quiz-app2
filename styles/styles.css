@@ -113,6 +113,12 @@ body {
       border-width: 2px; }
     #my-quiz .question .ans.correct::after {
       background-image: url(../images/icon_correct.svg); }
+    #my-quiz .question .ans.image {
+      min-height: 60px;
+      padding: 0;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain; }
   #my-quiz .question.unanswered .ans {
     cursor: pointer; }
   #my-quiz .question.unanswered .ans:hover {

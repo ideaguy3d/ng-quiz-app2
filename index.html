@@ -41,17 +41,30 @@
 		{{ question.questionState === 'answered' ? 'answered' : 'unanswered' }}
 		{{ $index === activeQuestion ? 'active' : 'inactive' }}">
 		<p class="txt">{{ question.question }}</p>
-		<!-- answer inner loop -->
-		<p class="ans" ng-repeat="anwser in question.answers"
-		   ng-click="selectAnswer($parent.$index, $index)">
-			{{ anwser.text }}
+		
+		<!-- Inner Loop Begins: -->
+		<p class="ans" ng-class="{
+			    'image': answer.image,
+			    'selected': isSelected($parent.$index, $index),
+			    'correct': isCorrect($parent.$index, $index)
+			   }" ng-style="{
+			    'background-image': 'url({{answer.image}})'
+			   }" ng-click="selectAnswer($parent.$index, $index)"
+			   ng-repeat="answer in question.answers">
+			{{ answer.text }}
 		</p>
 		<!-- feedback: -->
 		<div class="feedback">
-			<p>Correct! Good job ^_^</p>
-			<p>Wrong! Try again :T</p>
-			<p>More information feedback</p>
-			<div class="btn btn-sm btn-info"><strong>Continue</strong></div>
+			<p ng-show="question.correctness === 'correct'">
+				Correct! Good job ^_^
+			</p>
+			<p ng-show="question.correctness === 'incorrect'">
+				Wrong. Keep on studying. :/
+			</p>
+			<p>{{question.feedback}}</p>
+			<div class="btn btn-sm btn-info" ng-click="selectContinue()">
+				<strong>Continue</strong>
+			</div>
 		</div>
 	</div>
 	
@@ -66,10 +79,11 @@
 		</div>
 	</div>
 </section>
-
+<hr>
+<p class="alert alert-info">version 0.0.{{ 2+2 }} <small><i>still in development</i></small></p>
 <footer class="navbar navbar-default navbar-fixed-bottom">
 	<div class="container">
-		<a href="https://github.com/ideaguy3d/ng-quiz-app" target="_blank" class="btn btn-lg">
+		<a href="https://github.com/ideaguy3d/ng-quiz-app2" target="_blank" class="btn btn-lg">
 			<strong>Source Code for this app</strong>
 		</a>
 		Built by:
