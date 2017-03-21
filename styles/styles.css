@@ -71,7 +71,7 @@ body {
       opacity: 1; }
   #my-quiz .intro {
     position: absolute;
-    top: 200px;
+    top: 220px;
     left: 700px;
     background-color: rgba(0, 0, 0, 0.5);
     padding: 12px;
@@ -80,7 +80,7 @@ body {
     left: -1200px; }
   #my-quiz .question {
     position: absolute;
-    top: 120px;
+    top: 220px;
     left: 700px;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.5);
@@ -155,6 +155,6 @@ body {
       #my-quiz .results .share a.btn.twitter {
         background-image: url(../images/icon_twitter.svg); }
   #my-quiz .active, #my-quiz .inactive {
-    transition: left 1.5s ease-in-out; }
+    transition: left 0.5s ease-in-out; }
   #my-quiz .active {
     left: 0 !important; }

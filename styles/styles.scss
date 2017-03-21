@@ -2,7 +2,6 @@
 Julius Alvarado
 www.julius3d.com
 */
-
 @import url(http://fonts.googleapis.com/css?family=Titillium+Web:900|Roboto:400,100);
 
 $j-black: #555555;
@@ -77,14 +76,14 @@ body {
 			opacity: 1;
 		}
 	}
-		
+	
 	/*
 	//-- INTRO SECTION --\\
 	-------- #my-quiz > .intro --------
 	*/
 	.intro {
 		position: absolute;
-		top: 200px;
+		top: 220px;
 		left: 700px;
 		background-color: $transparent-bg-5;
 		padding: 12px;
@@ -101,7 +100,7 @@ body {
 	*/
 	.question {
 		position: absolute;
-		top: 120px;
+		top: 220px;
 		left: 700px;
 		width: 100%;
 		background-color: $transparent-bg-5;
@@ -180,11 +179,11 @@ body {
 		}
 		
 		.feedback {
-			 visibility: visible;
+			visibility: visible;
 			transition: opacity 1.5s, margin-top 1.5s;
 			opacity: 1;
-			 margin-top: 10px;
-		 }
+			margin-top: 10px;
+		}
 	}
 	
 	/*
@@ -222,13 +221,12 @@ body {
 	
 	// active section:
 	.active, .inactive {
-		transition: left 1.5s ease-in-out;
+		transition: left 0.5s ease-in-out;
 	}
 	
 	.active {
 		left: 0 !important;
 	}
-	
 	
 }
 

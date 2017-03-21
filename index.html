@@ -19,11 +19,13 @@
 
 <section id="my-quiz" ng-controller="QuizCtrl">
 	<h1>{{ introMessage }}:</h1>
-	<h2 class="text-center">Routing</h2>
+	<h2 class="text-center">AngularJS</h2>
 	
 	<!-- Progress div: -->
 	<div class="j-progress">
-		<div class="{{ ($index === activeQuestion) ? 'on' : 'off'}}"
+		<div class="{{ ($index === activeQuestion) ? 'on' : 'off'}}
+			 {{ question.questionState === 'answered' ? 'answered' : 'unaswered' }}
+			 {{ question.correctness === 'correct' ? 'correct' : 'incorrect' }}"
 		     ng-repeat="question in myQuestions"></div>
 	</div>
 	
@@ -50,7 +52,7 @@
 			   }" ng-style="{
 			    'background-image': 'url({{answer.image}})'
 			   }" ng-click="selectAnswer($parent.$index, $index)"
-			   ng-repeat="answer in question.answers">
+		   ng-repeat="answer in question.answers">
 			{{ answer.text }}
 		</p>
 		<!-- feedback: -->
@@ -69,18 +71,21 @@
 	</div>
 	
 	<!-- Results div: -->
-	<div class="results">
+	<div class="results {{ totalQuestions === activeQuestion ? 'active' : 'inactive' }}">
 		<h3>The Results</h3>
-		<p>Your score was X.YZ%</p>
+		<p>{{ score }}/{{ totalQuestions }} score =  {{percentScore}}%</p>
 		<p>Challenge your friends:</p>
-		<div class="share">
-			<a href="#" class="btn btn-sm btn-warning email">Email</a>
-			<a href="#" class="btn btn-sm btn-info twitter">Tweet</a>
+		<div class="share" ng-bind-html="createShareLinks(percentage)">
+			
 		</div>
 	</div>
 </section>
+
 <hr>
-<p class="alert alert-info">version 0.0.{{ 2+2 }} <small><i>still in development</i></small></p>
+
+<p class="alert alert-info">version 0.0.{{ 2+2 }}
+	<small><i>... still in development</i></small>
+</p>
 <footer class="navbar navbar-default navbar-fixed-bottom">
 	<div class="container">
 		<a href="https://github.com/ideaguy3d/ng-quiz-app2" target="_blank" class="btn btn-lg">
