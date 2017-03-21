@@ -158,3 +158,69 @@ body {
     transition: left 0.5s ease-in-out; }
   #my-quiz .active {
     left: 0 !important; }
+
+@media screen and (max-width: 650px) {
+  body {
+    padding: 0;
+    margin: 0; }
+  #my-quiz {
+    width: 320px;
+    background-size: 320px auto; }
+    #my-quiz h1 {
+      width: 300px;
+      font-size: 1.2em;
+      top: 25px;
+      left: 25px; }
+      #my-quiz h1 span {
+        line-height: 42px; }
+    #my-quiz h2 {
+      margin: 0; }
+    #my-quiz h3 {
+      font-size: 2.2em;
+      margin-bottom: 12px; }
+    #my-quiz .j-progress {
+      width: 300px;
+      top: 110px;
+      left: 25px; }
+      #my-quiz .j-progress div {
+        width: 25px;
+        height: 25px;
+        margin-right: 20px; }
+      #my-quiz .j-progress div::after {
+        top: -30px;
+        width: 52px;
+        height: 32px; }
+    #my-quiz .intro {
+      width: 320px;
+      top: 160px;
+      left: 330px; }
+    #my-quiz .question {
+      width: 320px;
+      top: 160px;
+      left: 330px; }
+      #my-quiz .question .txt {
+        font-size: 1.4em;
+        margin-bottom: 14px; }
+      #my-quiz .question .ans {
+        font-size: 1em;
+        padding: 5px 10px;
+        margin-bottom: 10px; }
+      #my-quiz .question .ans.image {
+        min-height: 46px;
+        background-size: auto 46px; }
+      #my-quiz .question .ans.image:hover {
+        background-color: #555555; }
+    #my-quiz .results {
+      width: 320px;
+      top: 150px;
+      left: 330px; }
+      #my-quiz .results .share {
+        margin-top: 20px; }
+      #my-quiz .results a.btn {
+        margin-bottom: 20px; }
+    #my-quiz .active {
+      left: 25px; }
+    #my-quiz .intro.inactive, #my-quiz .inactive.answered {
+      left: -650px; }
+    #my-quiz .quiz-title {
+      background-color: rgba(0, 0, 0, 0.5); } }

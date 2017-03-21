@@ -18,9 +18,10 @@
 <body ng-app="app-quiz">
 
 <section id="my-quiz" ng-controller="QuizCtrl">
-	<h1>{{ introMessage }}:</h1>
-	<h2 class="text-center">AngularJS</h2>
-	
+	<div class="quiz-title">
+		<h1>{{ introMessage }}:</h1>
+		<h2 class="text-center">AngularJS</h2>
+	</div>
 	<!-- Progress div: -->
 	<div class="j-progress">
 		<div class="{{ ($index === activeQuestion) ? 'on' : 'off'}}
@@ -32,9 +33,9 @@
 	<!-- Intro div: -->
 	<div class="intro {{ (activeQuestion > -1) ? 'inactive' : 'active' }}">
 		<h2>Intro</h2>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquid exercitationem facilis minus obcaecati
-		   omnis perspiciatis recusandae tenetur! Aliquam commodi cumque exercitationem harum illo ipsa iure
-		   perspiciatis quam sapiente unde!</p>
+		<p>Hi. This is a brief advanced level quiz of the Angular1 framework. Angular1 is still an awesome rockstar
+		   framework compared to its' competitor Angular2. Angular2 really is a different framework despite
+		   its' similar sounding name.</p>
 		<button class="btn btn-warning" ng-click="activeQuestion = 0">Begin</button>
 	</div>
 	
@@ -73,10 +74,10 @@
 	<!-- Results div: -->
 	<div class="results {{ totalQuestions === activeQuestion ? 'active' : 'inactive' }}">
 		<h3>The Results</h3>
-		<p>{{ score }}/{{ totalQuestions }} score =  {{percentScore}}%</p>
+		<p>{{ score }}/{{ totalQuestions }} score = {{percentScore}}%</p>
 		<p>Challenge your friends:</p>
 		<div class="share" ng-bind-html="createShareLinks(percentage)">
-			
+		
 		</div>
 	</div>
 </section>
