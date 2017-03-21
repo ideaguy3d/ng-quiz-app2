@@ -8,6 +8,19 @@
         controllerId = 'QuizCtrl',
         factoryId = 'jDataSer';
 
+    /*
+     app.config(function ($routeProvider) {
+     $routeProvider.when('/grade-store', {
+     templateUrl: 'client/views/main.html',
+     controller: 'MainCtrl'
+     }).otherwise({
+     redirectTo: '/'
+     });
+     });
+    */
+
+
+    //#region Quiz Application:
     app.factory(factoryId, ['$http', jDataServiceClass]);
     app.controller(controllerId, ['$scope', '$sce', 'jDataSer', QuizCtrlClass]);
 
@@ -54,10 +67,10 @@
 
         $scope.createShareLinks = function (percent) {
             var url = 'http://php1.julius3d.com';
-            var emailLink = '<a href="mailto:?subject=Quiz Score.&amp;body=Beat my '+percent+
-                '% quiz score at '+url+' studios." class="btn btn-sm btn-warning email">Email</a>';
-            var tweetLink = '<a href="http://twitter.com/share?text=I scored '+percent+' on my AngularJS quiz. ' +
-                'Beat my score at &hashtags=ngQuiz&url='+url+'" target="_blank" class="btn btn-sm btn-info twitter">Tweet</a>';
+            var emailLink = '<a href="mailto:?subject=Quiz Score.&amp;body=Beat my ' + percent +
+                '% quiz score at ' + url + ' studios." class="btn btn-sm btn-warning email">Email</a>';
+            var tweetLink = '<a href="http://twitter.com/share?text=I scored ' + percent + ' on my AngularJS quiz. ' +
+                'Beat my score at &hashtags=ngQuiz&url=' + url + '" target="_blank" class="btn btn-sm btn-info twitter">Tweet</a>';
 
             var newMarkup = emailLink + tweetLink;
             return $sce.trustAsHtml(newMarkup);
@@ -87,4 +100,6 @@
             getLocalQuizData: getLocalQuizData
         }
     }
+
+    //#endregion
 }());

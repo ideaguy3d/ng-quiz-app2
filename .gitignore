@@ -7,3 +7,5 @@ node_modules
 **/**/*.xml
 .idea/workspace.xml
 api/.idea/workspace.xml
+**/bower_components
+app/ui.html

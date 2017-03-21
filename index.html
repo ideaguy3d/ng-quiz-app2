@@ -17,6 +17,8 @@
 
 <body ng-app="app-quiz">
 
+<!--<ng-view></ng-view>-->
+
 <section id="my-quiz" ng-controller="QuizCtrl">
 	<div class="quiz-title">
 		<h1>{{ introMessage }}:</h1>
@@ -76,9 +78,7 @@
 		<h3>The Results</h3>
 		<p>{{ score }}/{{ totalQuestions }} score = {{percentScore}}%</p>
 		<p>Challenge your friends:</p>
-		<div class="share" ng-bind-html="createShareLinks(percentage)">
-		
-		</div>
+		<div class="share" ng-bind-html="createShareLinks(percentage)"></div>
 	</div>
 </section>
 
@@ -104,7 +104,7 @@
 <script src="vendor/angular/angular.min.js"></script>
 
 <!-- Custom Scripts -->
-<script src="client/app-quiz.js"></script>
+<script src="app-quiz.js"></script>
 
 </body>
 </html>
