@@ -8,24 +8,13 @@
         controllerId = 'QuizCtrl',
         factoryId = 'jDataSer';
 
-    /*
-     app.config(function ($routeProvider) {
-     $routeProvider.when('/grade-store', {
-     templateUrl: 'client/views/main.html',
-     controller: 'MainCtrl'
-     }).otherwise({
-     redirectTo: '/'
-     });
-     });
-    */
-
 
     //#region Quiz Application:
     app.factory(factoryId, ['$http', jDataServiceClass]);
     app.controller(controllerId, ['$scope', '$sce', 'jDataSer', QuizCtrlClass]);
 
     function QuizCtrlClass($scope, $sce, jDataSer) {
-        $scope.introMessage = 'Test your knowledge';
+        $scope.introMessage = 'ngQuickQuiz';
         $scope.score = 0;
         $scope.activeQuestion = -1;
         $scope.activeQuestionAnswered = 0;
