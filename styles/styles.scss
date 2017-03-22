@@ -347,6 +347,21 @@ form#jform {
 	.jform-feedback * {
 		color: indianred !important;
 	}
+	
+	input.ng-invalid.ng-touched {
+		border: 2px solid indianred;
+	}
+	
+	input.ng-valid.ng-touched {
+		border: 2px solid forestgreen;
+	}
+	
+	&.ng-invalid {
+		
+		button.btn.btn-primary {
+			background-color: #555 !important;
+		}
+	}
 }
 
 

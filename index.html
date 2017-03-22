@@ -21,7 +21,8 @@
 <!-- form division begin:  -->
 <div class="container page">
 	<!-- Angular app begin: -->
-	<section class="card register" ng-app>
+	<section class="card register" ng-app="app">
+		
 		<form name="jform" id="jform" novalidate>
 			<div class="jform-feedback">
 				<p ng-show="jform.firstname.$invalid && jform.firstname.$touched">
@@ -64,6 +65,7 @@
 			<br>
 			<button type="submit" class="btn btn-lg btn-primary">Submit</button>
 		</form>
+		
 	</section>
 </div>
 
@@ -72,7 +74,14 @@
 <script src="bower_components/angular-route/angular-route.min.js"></script>
 <script src="bower_components/angular-animate/angular-animate.min.js"></script>
 
-<!-- Julius Scripts -->
+<script type="text/javascript">
+	(function(){
+	    "use strict";
+	    
+	    var app =  angular.module('app', []);
+	    
+	}());
+</script>
 
 
 </body>

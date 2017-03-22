@@ -234,3 +234,9 @@ form#jform {
   max-width: 640px; }
   form#jform .jform-feedback * {
     color: indianred !important; }
+  form#jform input.ng-invalid.ng-touched {
+    border: 2px solid indianred; }
+  form#jform input.ng-valid.ng-touched {
+    border: 2px solid forestgreen; }
+  form#jform.ng-invalid button.btn.btn-primary {
+    background-color: #555 !important; }
