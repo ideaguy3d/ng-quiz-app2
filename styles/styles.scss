@@ -336,6 +336,19 @@ body {
 	}
 }
 
+/*
+	//-- JFORM SECTION --\\
+	------------------------
+*/
+form#jform {
+	width: 320px;
+	max-width: 640px;
+	
+	.jform-feedback * {
+		color: indianred !important;
+	}
+}
+
 
 
 

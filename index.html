@@ -7,15 +7,73 @@
 	<!-- Vendor CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
 	      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
+	<link rel="stylesheet" href="styles/styles.css">
 </head>
 
 
 <body>
 
 <div class="container">
-	<h1>Julius3D.com Form Validation</h1>
+	<h1>Julius3D.com Sign-up Form</h1>
+	<h4>Fill out your information</h4>
 </div>
+<hr>
+<!-- form division begin:  -->
+<div class="container page">
+	<!-- Angular app begin: -->
+	<section class="card register" ng-app>
+		<form name="jform" id="jform" novalidate>
+			<div class="jform-feedback">
+				<p ng-show="jform.firstname.$invalid && jform.firstname.$touched">
+					Please fill out your <strong>first</strong> name.
+				</p>
+				<p ng-show="jform.lastname.$invalid && jform.lastname.$touched">
+					Please fill out your <strong>last</strong> name.
+				</p>
+				<p ng-show="jform.email.$invalid && jform.email.$touched">
+					Please fill out your <strong>email.</strong>
+				</p>
+				<p ng-show="jform.password.$invalid && jform.password.$touched">
+					Please fill out your <strong>password</strong> with at least 6 characters.
+				</p>
+			</div>
+			<fieldset>
+				<div class="form-group">
+					<!-- first name -->
+					<label for="firstname">First Name:</label>
+					<input id="firstname" class="form-control" type="text" name="firstname"
+					       placeholder="first name" ng-model="user.firstname"
+					       ng-required="true"> <br>
+					<!-- last name -->
+					<label for="lastname">Last Name:</label>
+					<input id="lastname" class="form-control" type="text" name="lastname"
+					       placeholder="last name" ng-model="user.lastname"
+					       ng-required="true"> <br>
+					<!-- email -->
+					<label for="email">Email:</label> <br>
+					<input id="email" class="form-control" type="email" name="email"
+					       placeholder="email name" ng-model="user.email"
+					       ng-required="6"> <br>
+					<!-- password -->
+					<label for="password">Password:</label>
+					<input id="password" class="form-control" type="password" name="password"
+					       placeholder="first name" ng-model="user.password"
+					       ng-minlength="6" ng-required="true">
+				</div>
+			</fieldset>
+			<br>
+			<button type="submit" class="btn btn-lg btn-primary">Submit</button>
+		</form>
+	</section>
+</div>
+
+<!-- Vendor Scripts -->
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-route/angular-route.min.js"></script>
+<script src="bower_components/angular-animate/angular-animate.min.js"></script>
+
+<!-- Julius Scripts -->
+
 
 </body>
 </html>

@@ -224,3 +224,13 @@ body {
       left: -650px; }
     #my-quiz .quiz-title {
       background-color: rgba(0, 0, 0, 0.5); } }
+
+/*
+	//-- JFORM SECTION --\\
+	------------------------
+*/
+form#jform {
+  width: 320px;
+  max-width: 640px; }
+  form#jform .jform-feedback * {
+    color: indianred !important; }
