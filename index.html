@@ -1,110 +1,88 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
 	<title>www.julius3d.com</title>
 	
 	<!-- Vendor CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
 	      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	
-	<!-- Custom CSS -->
-	<link rel="stylesheet" type="text/css" href="styles/styles.css">
-
+	<link rel="stylesheet" href="styles/styles.css">
 </head>
 
 
-<body ng-app="app-quiz">
+<body>
 
-<!--<ng-view></ng-view>-->
-
-<section id="my-quiz" ng-controller="QuizCtrl">
-	<div class="quiz-title">
-		<h1>{{ introMessage }}:</h1>
-		<h2 class="text-center">AngularJS</h2>
-	</div>
-	<!-- Progress div: -->
-	<div class="j-progress">
-		<div class="{{ ($index === activeQuestion) ? 'on' : 'off'}}
-			 {{ question.questionState === 'answered' ? 'answered' : 'unaswered' }}
-			 {{ question.correctness === 'correct' ? 'correct' : 'incorrect' }}"
-		     ng-repeat="question in myQuestions"></div>
-	</div>
-	
-	<!-- Intro div: -->
-	<div class="intro {{ (activeQuestion > -1) ? 'inactive' : 'active' }}">
-		<h2>Intro</h2>
-		<p>Hi. This is a brief advanced level quiz of the Angular1 framework. Angular1 is still an awesome rockstar
-		   framework compared to its' competitor Angular2. Angular2 really is a different framework despite
-		   its' similar sounding name.</p>
-		<button class="btn btn-warning" ng-click="activeQuestion = 0">Begin</button>
-	</div>
-	
-	<!-- Question div: -->
-	<div ng-repeat="question in myQuestions" class="question
-		{{ question.questionState === 'answered' ? 'answered' : 'unanswered' }}
-		{{ $index === activeQuestion ? 'active' : 'inactive' }}">
-		<p class="txt">{{ question.question }}</p>
-		
-		<!-- Inner Loop Begins: -->
-		<p class="ans" ng-class="{
-			    'image': answer.image,
-			    'selected': isSelected($parent.$index, $index),
-			    'correct': isCorrect($parent.$index, $index)
-			   }" ng-style="{
-			    'background-image': 'url({{answer.image}})'
-			   }" ng-click="selectAnswer($parent.$index, $index)"
-		   ng-repeat="answer in question.answers">
-			{{ answer.text }}
-		</p>
-		<!-- feedback: -->
-		<div class="feedback">
-			<p ng-show="question.correctness === 'correct'">
-				Correct! Good job ^_^
-			</p>
-			<p ng-show="question.correctness === 'incorrect'">
-				Wrong. Keep on studying. :/
-			</p>
-			<p>{{question.feedback}}</p>
-			<div class="btn btn-sm btn-info" ng-click="selectContinue()">
-				<strong>Continue</strong>
-			</div>
-		</div>
-	</div>
-	
-	<!-- Results div: -->
-	<div class="results {{ totalQuestions === activeQuestion ? 'active' : 'inactive' }}">
-		<h3>The Results</h3>
-		<p>{{ score }}/{{ totalQuestions }} score = {{percentScore}}%</p>
-		<p>Challenge your friends:</p>
-		<div class="share" ng-bind-html="createShareLinks(percentage)"></div>
-	</div>
-</section>
-
+<div class="container">
+	<h1>Julius3D.com Sign-up Form</h1>
+	<h4>Fill out your information</h4>
+</div>
 <hr>
-
-<p class="alert alert-info">version 0.0.{{ 2+2 }}
-	<small><i>... still in development</i></small>
-</p>
-<footer class="navbar navbar-default navbar-fixed-bottom">
-	<div class="container">
-		<a href="https://github.com/ideaguy3d/ng-quiz-app2" target="_blank" class="btn btn-lg">
-			<strong>Source Code for this app</strong>
-		</a>
-		Built by:
-		<a href="http://julius3d.com" target="_blank">
-			<strong><i>Julius Alvarado</i></strong>
-		</a>
-	</div>
-</footer>
-
+<!-- form division begin:  -->
+<div class="container page">
+	<!-- Angular app begin: -->
+	<section class="card register" ng-app="app">
+		
+		<form name="jform" id="jform" novalidate>
+			<div class="jform-feedback">
+				<p ng-show="jform.firstname.$invalid && jform.firstname.$touched">
+					Please fill out your <strong>first</strong> name.
+				</p>
+				<p ng-show="jform.lastname.$invalid && jform.lastname.$touched">
+					Please fill out your <strong>last</strong> name.
+				</p>
+				<p ng-show="jform.email.$invalid && jform.email.$touched">
+					Please fill out your <strong>email.</strong>
+				</p>
+				<p ng-show="jform.password.$invalid && jform.password.$touched">
+					Please fill out your <strong>password</strong> with at least 6 characters.
+				</p>
+			</div>
+			<fieldset>
+				<div class="form-group">
+					<!-- first name -->
+					<label for="firstname">First Name:</label>
+					<input id="firstname" class="form-control" type="text" name="firstname"
+					       placeholder="first name" ng-model="user.firstname"
+					       ng-required="true"> <br>
+					<!-- last name -->
+					<label for="lastname">Last Name:</label>
+					<input id="lastname" class="form-control" type="text" name="lastname"
+					       placeholder="last name" ng-model="user.lastname"
+					       ng-required="true"> <br>
+					<!-- email -->
+					<label for="email">Email:</label> <br>
+					<input id="email" class="form-control" type="email" name="email"
+					       placeholder="email name" ng-model="user.email"
+					       ng-required="6"> <br>
+					<!-- password -->
+					<label for="password">Password:</label>
+					<input id="password" class="form-control" type="password" name="password"
+					       placeholder="first name" ng-model="user.password"
+					       ng-minlength="6" ng-required="true">
+				</div>
+			</fieldset>
+			<br>
+			<button type="submit" class="btn btn-lg btn-primary">Submit</button>
+		</form>
+		
+	</section>
+</div>
 
 <!-- Vendor Scripts -->
-<script src="vendor/angular/angular.min.js"></script>
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-route/angular-route.min.js"></script>
+<script src="bower_components/angular-animate/angular-animate.min.js"></script>
 
-<!-- Custom Scripts -->
-<script src="app-quiz.js"></script>
+<script type="text/javascript">
+	(function(){
+	    "use strict";
+	    
+	    var app =  angular.module('app', []);
+	    
+	}());
+</script>
+
 
 </body>
 </html>
