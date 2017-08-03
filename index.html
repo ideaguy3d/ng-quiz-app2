@@ -13,17 +13,19 @@
 
 <body>
 
-<div class="container">
-	<h1>Julius3D.com Sign-up Form</h1>
-	<h4>Fill out your information</h4>
-</div>
-<hr>
+
 <!-- form division begin:  -->
-<div class="container page">
-	<!-- Angular app begin: -->
-	<section class="card register" ng-app="app">
-		
-		<form name="jform" id="jform" novalidate>
+<!-- Angular app begin: -->
+<div class="container page" ng-app="j-form-app">
+	<section class="card register" ng-controller="RegisterCtrl">
+		<div class="container">
+			<h1>Julius3D.com Sign-up Form</h1>
+			<h4>Fill out your information</h4>
+			<h2 ng-show="message">{{ message }}</h2>
+		</div>
+		<hr>
+		<form name="jform" id="jform" novalidate
+				ng-submit="register()">
 			<div class="jform-feedback">
 				<p ng-show="jform.firstname.$invalid && jform.firstname.$touched">
 					Please fill out your <strong>first</strong> name.
@@ -53,19 +55,18 @@
 					<!-- email -->
 					<label for="email">Email:</label> <br>
 					<input id="email" class="form-control" type="email" name="email"
-					       placeholder="email name" ng-model="user.email"
+					       placeholder="email" ng-model="user.email"
 					       ng-required="6"> <br>
 					<!-- password -->
 					<label for="password">Password:</label>
 					<input id="password" class="form-control" type="password" name="password"
-					       placeholder="first name" ng-model="user.password"
+					       placeholder="password" ng-model="user.password"
 					       ng-minlength="6" ng-required="true">
 				</div>
 			</fieldset>
 			<br>
 			<button type="submit" class="btn btn-lg btn-primary">Submit</button>
 		</form>
-		
 	</section>
 </div>
 
@@ -75,12 +76,21 @@
 <script src="bower_components/angular-animate/angular-animate.min.js"></script>
 
 <script type="text/javascript">
-	(function(){
-	    "use strict";
-	    
-	    var app =  angular.module('app', []);
-	    
-	}());
+    // quick validation code:
+    (function () {
+        "use strict";
+
+        var app = angular.module('j-form-app', []),
+            controllerId = 'RegisterCtrl';
+
+        app.controller(controllerId, ['$scope',
+            function ($scope) {
+                $scope.register = function () {
+                    $scope.message = 'Thanks for signing up '+$scope.user.lastname+', ' + $scope.user.firstname;
+                }
+            }
+        ]);
+    }());
 </script>
 
 

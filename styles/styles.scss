@@ -343,6 +343,7 @@ body {
 form#jform {
 	width: 320px;
 	max-width: 640px;
+	margin: auto;
 	
 	.jform-feedback * {
 		color: indianred !important;
@@ -360,6 +361,8 @@ form#jform {
 		
 		button.btn.btn-primary {
 			background-color: #555 !important;
+			opacity: 0.2;
+			cursor: not-allowed;
 		}
 	}
 }
